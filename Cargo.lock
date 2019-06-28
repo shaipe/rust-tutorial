@@ -292,7 +292,9 @@ source = "registry+https://mirrors.ustc.edu.cn/crates.io-index"
 name = "tutorial"
 version = "0.1.0"
 dependencies = [
+ "hyper 0.10.16 (registry+https://mirrors.ustc.edu.cn/crates.io-index)",
  "nickel 0.11.0 (registry+https://mirrors.ustc.edu.cn/crates.io-index)",
+ "regex 1.1.7 (registry+https://mirrors.ustc.edu.cn/crates.io-index)",
  "serde 1.0.94 (registry+https://mirrors.ustc.edu.cn/crates.io-index)",
  "serde_derive 1.0.94 (registry+https://mirrors.ustc.edu.cn/crates.io-index)",
  "serde_json 1.0.39 (registry+https://mirrors.ustc.edu.cn/crates.io-index)",

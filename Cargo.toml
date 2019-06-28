@@ -8,6 +8,8 @@ edition = "2018"
 serde="*"
 serde_json="*"
 serde_derive="*"
+regex="*"
+hyper="*"
 
 
 [dependencies.nickel]
