@@ -5,3 +5,9 @@ authors = ["shaipe <shaipe@sina.com>"]
 edition = "2018"
 
 [dependencies]
+serde = "*"
+serde_json = "*"
+serde_derive = "*"
+
+[dependencies.nickel]
+version = "*"
