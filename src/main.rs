@@ -1,33 +1,47 @@
-// #[warn(unused_imports)]
-// #[macro_use] 
+#[macro_use] extern crate nickel;
+extern crate serde;
+extern crate serde_json;
+#[macro_use] extern crate serde_derive;
 
-extern crate nickel;
+use nickel::status::StatusCode;
+use nickel::{Nickel, JsonBody, HttpRouter, MediaType};
 
-use std::io::Write;
-use nickel::status::StatusCode::NotFound;
-use nickel::{Nickel, NickelError, Action, Continue, Halt, Request};
+#[derive(Serialize, Deserialize)]
+struct Person {
+    first_name: String,
+    last_name:  String,
+}
 
 fn main() {
     let mut server = Nickel::new();
 
-    //this is how to overwrite the default error handler to handle 404 cases with a custom view
-    fn custom_404<'a>(err: &mut NickelError, _req: &mut Request) -> Action {
-        if let Some(ref mut res) = err.stream {
-            if res.status() == NotFound {
-                let _ = res.write_all(b"<h1>Call the police!</h1>");
-                return Halt(())
-            }
-        }
+    // try it with curl
+    // curl 'http://localhost:6767/a/post/request' -H 'Content-Type: application/json;charset=UTF-8'  --data-binary $'{ "first_name": "John","last_name": "Connor" }'
+    server.post("/", middleware! { |request, response|
+        let person = try_with!(response, {
+            request.json_as::<Person>().map_err(|e| (StatusCode::BadRequest, e))
+        });
+        format!("Hello {} {}", person.first_name, person.last_name)
+    });
 
-        Continue(())
-    }
+    // go to http://localhost:6767/your/name to see this route in action
+    server.get("/:first/:last", middleware! { |req|
+        // These unwraps are safe because they are required parts of the route
+        let first_name = req.param("first").unwrap();
+        let last_name = req.param("last").unwrap();
 
+        let person = Person {
+            first_name: first_name.to_string(),
+            last_name: last_name.to_string(),
+        };
+        serde_json::to_value(person).map_err(|e| (StatusCode::InternalServerError, e))
+    });
 
-    // issue #20178
-    let custom_handler: fn(&mut NickelError, &mut Request) -> Action = custom_404;
-
-    server.handle_error(custom_handler);
+    // go to http://localhost:6767/content-type to see this route in action
+    server.get("/raw", middleware! { |_, mut response|
+        response.set(MediaType::Json);
+        r#"{ "foo": "bar" }"#
+    });
 
     server.listen("127.0.0.1:6767").unwrap();
-
 }
