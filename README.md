@@ -17,3 +17,7 @@ RUST Lang
 
 ### 其他
 [Rust学习笔记 - 模块系统](https://www.codercto.com/a/84199.html)
+
+### 电子书
+
+[Rust 程序设计语言（第二版） 简体中文版](https://kaisery.gitbooks.io/trpl-zh-cn/content/ch01-00-getting-started.html)
