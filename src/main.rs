@@ -9,13 +9,11 @@ extern crate regex;
 use nickel::status::StatusCode::{self, NotFound};
 use nickel::{Nickel, JsonBody, Continue,Halt,
     NickelError,StaticFilesHandler,Action,QueryString,
-    HttpRouter, MediaType, Request, Response, MiddlewareResult}
-;
+    HttpRouter, MediaType, Request, Response, MiddlewareResult};
 use std::collections::HashMap;
 use std::io::Write;
-
 use regex::Regex;
-use hyper::header::Location;
+use hyper::header::{Location,};
 
 #[derive(Serialize, Deserialize)]
 struct Person {

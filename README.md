@@ -21,3 +21,8 @@ RUST Lang
 ### 电子书
 
 [Rust 程序设计语言（第二版） 简体中文版](https://kaisery.gitbooks.io/trpl-zh-cn/content/ch01-00-getting-started.html)
+
+### 库
+
+[docs.rs/](https://docs.rs/)
+[Crates.io](https://crates.io/)
