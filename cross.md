@@ -1,6 +1,8 @@
 rust 跨平台编译
 ===
 
+在mac系统下编译到windows中一直还没有成功,还待研究.
+
 ## 环境配置
 ### 先添加需要编译的平台目录
 
@@ -19,6 +21,8 @@ rustup target add x86_64-unknown-linux-musl
 
 ```
 brew install filosottile/musl-cross/musl-cross
+
+brew install mingw-w64
 ```
 
 ### 添加配置
@@ -51,3 +55,6 @@ CC_x86_64_unknown_linux_musl="x86_64-linux-musl-gcc" cargo build --release --tar
 [https://rendered-obsolete.github.io/2019/03/19/rust_lambda.html](https://rendered-obsolete.github.io/2019/03/19/rust_lambda.html)
 [超方便的 rust 交叉编译](https://moevis.github.io/cheatsheet/2018/08/18/%E8%B6%85%E6%96%B9%E4%BE%BF%E7%9A%84-Rust-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91.html)
 
+[https://chr4.org/blog/2017/03/15/cross-compile-and-link-a-static-binary-on-macos-for-linux-with-cargo-and-rust/]
+https://wiki.archlinux.org/index.php/Rust
+https://hub.docker.com/r/ethankhall/rust-cross-build/
