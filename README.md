@@ -5,6 +5,7 @@ RUST Lang
 
 ### Web 框架
 [Nickel](http://nickel-org.github.io/)
+[Actix](https://actix.rs)
 
 ### 交叉编译
 [交叉编译linux_musl](https://www.andrew-thorburn.com/cross-compiling-a-simple-rust-web-app/)
@@ -21,6 +22,8 @@ RUST Lang
 ### 电子书
 
 [Rust 程序设计语言（第二版） 简体中文版](https://kaisery.gitbooks.io/trpl-zh-cn/content/ch01-00-getting-started.html)
+[Cargo](https://www.mankier.com/package/cargo)
+
 
 ### 库
 
