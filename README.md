@@ -1,6 +1,13 @@
 RUST Lang
 ===
 
+## 包管理辅助工具
+
+可以把包下载到本地进行管理,就不需要每次都从外网下载,可以实现半个离线包管理吧!
+
+* [cargo-edit](https://crates.io/crates/cargo-edit)
+
+
 ## 参考文档
 
 ### Web 框架
