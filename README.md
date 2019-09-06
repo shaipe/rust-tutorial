@@ -21,6 +21,16 @@ RUST Lang
 * [rust_lambda 表达式](https://rendered-obsolete.github.io/2019/03/19/rust_lambda.html)
 * [超方便的 rust 交叉编译](https://moevis.github.io/cheatsheet/2018/08/18/%E8%B6%85%E6%96%B9%E4%BE%BF%E7%9A%84-Rust-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91.html)
 
+```bash
+# 跨平台编译时,需要指定环境变量
+# 主要是在使用的ssl的地方,在linux下使用的是openssl而windows天macos是使用的系统自带的ssl
+OPENSSL_STATIC=1 \
+OPENSSL_LIB_DIR=/usr/local/cellar/openssl@1.1/1.1.1c/lib \
+OPENSSL_INCLUDE_DIR=/usr/local/cellar/openssl@1.1/1.1.1c/include \
+CC_x86_64_unknown_linux_musl="x86_64-linux-musl-gcc" \
+cargo build --target=x86_64-unknown-linux-musl
+```
+
 ### Rust WebAssembly
 
 * [WebAssembly + Rust 上手初探](https://www.codercto.com/a/43181.html)
