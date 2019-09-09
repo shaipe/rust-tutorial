@@ -67,7 +67,7 @@ shaipe/rust-centos
 docker exec -it rust-centos bash
 ```
 
-#### 2. 环境搭建
+#### 2. RUST环境搭建
 
 ```bash
 
@@ -89,9 +89,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # 让配置的环境变量生效
 source ~/.bashrc
-
 # 设置centos的时区
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# 安装cc的编译环境
+yum install gcc
+# 使用到openssl的环境
+yum install openssl-devel
 ```
 
 #### 3. 提交docker
