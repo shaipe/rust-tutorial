@@ -48,6 +48,63 @@ linker = "x86_64-linux-musl-gcc"
 CC_x86_64_unknown_linux_musl="x86_64-linux-musl-gcc" cargo build --release --target=x86_64-unknown-linux-musl
 
 
+### 采用docker实现跨平台编译
+
+#### 1. 创建和进入容器
+```bash
+# 创建docker
+docker pull centos
+
+# 运行容器对象
+docker run -itd \
+-p 8090:80 \
+--name rust-centos \
+--restart always \
+-v /Users/shaipe/workspace/rust/:/data \
+shaipe/rust-centos
+
+# 进入容器
+docker exec -it rust-centos bash
+```
+
+#### 2. 环境搭建
+
+```bash
+
+# 安装vim
+yum install vim
+
+# 安装rust环境
+curl https://sh.rustup.rs -sSf | sh
+
+# 添加环境变量
+# 临时环境变量
+source $HOME/.cargo/env
+
+# 永久环境变量
+vim ~/.bashrc
+
+# 添加Cargo环境变量到系统中
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# 让配置的环境变量生效
+source ~/.bashrc
+
+# 设置centos的时区
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+
+#### 3. 提交docker
+
+```bash
+# 提交docker容器
+docker commit -a "shaipe" -m "rust-coentos" 7c07b9fa7753 shaipe/rust-centos
+# 登录容器环境
+docker login 
+# 推送容器到docker hub
+docker push shaipe/rust-centos
+```
+
 ## 参考文档
 
 [rust-cross](https://github.com/japaric/rust-cross)
