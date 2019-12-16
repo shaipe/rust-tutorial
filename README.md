@@ -50,3 +50,15 @@ cargo build --target=x86_64-unknown-linux-musl
 
 * [docs.rs](https://docs.rs/)
 * [Crates.io](https://crates.io/)
+
+
+### 在Ubuntu下安装rust
+
+```bash
+# 安装好rust环境后需要执下面的语句安装编译
+apt install build-essential
+# openssl编译错误  HTTP
+# failed to run custom build command for `openssl-sys v0.9.53`
+apt install pkg-config
+apt install libssl-dev
+```
